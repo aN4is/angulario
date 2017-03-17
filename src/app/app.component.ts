@@ -1,10 +1,5 @@
 import { Component } from '@angular/core';
-
-export class Hero {
-  id: number;
-  name: string;
-  ability: string;
-}
+import { Hero } from './hero';
 
 const HEROES: Hero[] = [
   { id: 11, name: 'Viper', ability: 'Viper Strike'},
@@ -34,15 +29,7 @@ const HEROES: Hero[] = [
         {{hero.name}}
       </li>
     <ul>
-    <div *ngIf="selectedHero">
-      <h2>{{selectedHero.name}} details!</h2>
-      <div><label>id: </label>{{selectedHero.id}}</div>
-      <div>
-        <label>name: </label>
-        <input [(ngModel)]="selectedHero.name" placeholder="name">
-      </div>
-      <div><label>ability: </label>{{selectedHero.ability}}</div>
-    </div>
+    <my-hero-detail [hero]="selectedHero"></my-hero-detail>
     `,
   styles: [`
     .selected {
@@ -53,7 +40,7 @@ const HEROES: Hero[] = [
       margin: 0 0 0 2em 0;
       list-style-type: none;
       padding: 0;
-      width: 15em;
+      width: 25em;
     }
     .heroes li {
       cursor: pointer;
@@ -82,15 +69,15 @@ const HEROES: Hero[] = [
       display: inline-block;
       font-size: small;
       color: white;
-      padding: 0.8em 0.7em 0 0.7em;
+      padding: 0.35em 0.6em 0 0.7em;
       background-color: #607D8B;
-      line-height: 1em;
+      line-height: 0.9em;
       position: relative;
       left: -1px;
-      top: -4px;
-      height: 1.8em;
+      top: -5px;
+      height: 2em;
       margin-right: .8em;
-      border-radius: 4px 0 0 4px;
+      border-radius: 4px 4px 4px 4px;
     }
   `],
 })
